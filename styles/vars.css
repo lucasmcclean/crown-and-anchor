@@ -1,0 +1,11 @@
+:root {
+  --clr-base: #0a0b0b;
+  --clr-primary: #eae6ef;
+  --clr-secondary: #150e1b;
+  --clr-tertiary: #41324c;
+  --clr-quaternary: #280f3d;
+
+  --fs-base: 1rem;
+  --fs-title: 7rem;
+  --fs-base-lrg: 1.5rem;
+}
