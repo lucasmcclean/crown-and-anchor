@@ -1,0 +1,30 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+main {
+  height: 100%;
+  padding: 1rem;
+  color: var(--clr-primary);
+  background: var(--clr-base);
+}
+
+.faces-wrapper {
+  display: grid;
+  grid-template: repeat(2, 1fr) / repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.face {
+  height: 30svh;
+  width: 30vw;
+  border-radius: 20px;
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--clr-base) 80%, var(--clr-secondary)),
+    color-mix(in srgb, var(--clr-base) 30%, var(--clr-secondary))
+  );
+}

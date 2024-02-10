@@ -6,6 +6,6 @@
   --clr-quaternary: #280f3d;
 
   --fs-base: 1rem;
-  --fs-title: 7rem;
+  --fs-title: clamp(4rem, 10vw + 1rem, 7rem);
   --fs-base-lrg: 1.5rem;
 }
