@@ -41,14 +41,15 @@ h1 {
 }
 
 .menu-btn {
+  width: 6em;
   padding-block: 0.2em;
-  padding-inline: 1em;
   border-radius: 20px;
   font-size: var(--fs-base-lrg);
-  transition: 0.2s background, 0.2s color;
+  transition: ease-out all 0.2s;
 }
 
 .menu-btn:hover {
+  width: 6.5em;
   color: var(--clr-primary);
-  background: var(--clr-secondary);
+  background: color-mix(in srgb, var(--clr-secondary) 95%, var(--clr-primary));
 }
