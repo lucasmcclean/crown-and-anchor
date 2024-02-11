@@ -68,3 +68,40 @@ main::after {
     color-mix(in srgb, var(--clr-base) 30%, var(--clr-secondary))
   );
 }
+
+/* -----Icons----- */
+#heart-icon {
+  height: 5rem;
+  width: 5rem;
+  background-color: var(--clr-primary);
+  clip-path: url("../images/card-icons/#heart-mask");
+}
+
+#crown-icon {
+  height: 5rem;
+  width: 5rem;
+  background-color: var(--clr-primary);
+  clip-path: url("../images/card-icons/#crown-mask");
+}
+
+#diamond-icon {
+  height: 5rem;
+  width: 5rem;
+  background-color: var(--clr-primary);
+  clip-path: url("../images/card-icons/#diamond-mask");
+}
+
+#spade-icon {
+  background-color: var(--clr-primary);
+  clip-path: url("../images/card-icons/#spade-mask");
+}
+
+#anchor-icon {
+  background-color: var(--clr-primary);
+  clip-path: url("../images/card-icons/#anchor-mask");
+}
+
+#club-icon {
+  background-color: var(--clr-primary);
+  clip-path: url("../images/card-icons/#club-mask");
+}
