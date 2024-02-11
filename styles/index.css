@@ -3,11 +3,10 @@ body {
   height: 100%;
   width: 100%;
   background: var(--clr-base);
-  overflow: hidden;
 }
 
 main {
-  --border-dist: 0.7rem;
+  --border-dist: 1vh;
   position: fixed;
   height: calc(100% - 2 * var(--border-dist));
   width: calc(100% - 2 * var(--border-dist));
@@ -25,6 +24,7 @@ main {
     color-mix(in srgb, var(--clr-base) 60%, var(--clr-secondary)),
     color-mix(in srgb, var(--clr-base) 94%, var(--clr-primary))
   );
+  overflow: hidden;
 }
 
 h1 {

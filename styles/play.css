@@ -3,20 +3,55 @@ body {
   height: 100%;
   width: 100%;
   background: var(--clr-base);
-  overflow: hidden;
 }
 
 main {
+  --corner-size: 30svh;
+  --corner-style: 5px solid
+    color-mix(in srgb, var(--clr-primary) 70%, var(--clr-base));
+  --corner-brdr-r: 4px;
+  --border-dist: 1vh;
   position: fixed;
-  height: 100%;
-  width: 100%;
+  height: calc(100% - 2 * var(--border-dist));
+  width: calc(100% - 2 * var(--border-dist));
+  margin: var(--border-dist);
   padding: 1rem;
   color: var(--clr-primary);
+  background: linear-gradient(
+    160deg,
+    var(--clr-base),
+    color-mix(in srgb, var(--clr-base) 99%, var(--clr-primary))
+  );
+}
+
+main::before {
+  content: "";
+  position: fixed;
+  top: var(--border-dist);
+  left: var(--border-dist);
+  height: var(--corner-size);
+  width: var(--corner-size);
+  border-top: var(--corner-style);
+  border-left: var(--corner-style);
+  border-radius: var(--corner-brdr-r);
+}
+
+main::after {
+  content: "";
+  position: fixed;
+  top: calc(100% - var(--border-dist) - var(--corner-size));
+  left: calc(100% - var(--border-dist) - var(--corner-size));
+  height: var(--corner-size);
+  width: var(--corner-size);
+  border-right: var(--corner-style);
+  border-bottom: var(--corner-style);
+  border-radius: var(--corner-brdr-r);
 }
 
 .faces-wrapper {
   height: 100%;
-  width: 80%;
+  width: 70%;
+  padding: 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(10vw, 20vw));
   gap: 1rem;
@@ -24,8 +59,8 @@ main {
 }
 
 .face {
-  height: 95%;
-  width: 95%;
+  height: 100%;
+  width: 100%;
   border-radius: 20px;
   background: linear-gradient(
     160deg,
