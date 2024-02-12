@@ -59,9 +59,14 @@ main::after {
 }
 
 .face {
+  --icon-filter: invert(0.3) sepia(0.5) hue-rotate(230deg);
+  --background-opacity: 0;
   height: 100%;
   width: 100%;
   border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: linear-gradient(
     160deg,
     color-mix(in srgb, var(--clr-base) 80%, var(--clr-secondary)),
@@ -69,39 +74,27 @@ main::after {
   );
 }
 
-/* -----Icons----- */
-#heart-icon {
-  height: 5rem;
-  width: 5rem;
-  background-color: var(--clr-primary);
-  clip-path: url("../images/card-icons/#heart-mask");
+/* .face::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--clr-base) 50%, var(--clr-secondary)),
+    color-mix(in srgb, var(--clr-base) 10%, var(--clr-secondary))
+  );
+  opacity: var(--background-opacity);
+  transition: opacity 0.2s;
+} */
+
+.face:hover {
+  --icon-filter: invert(0.4) sepia(0.7) hue-rotate(230deg);
+  --background-opacity: 1;
 }
 
-#crown-icon {
-  height: 5rem;
-  width: 5rem;
-  background-color: var(--clr-primary);
-  clip-path: url("../images/card-icons/#crown-mask");
-}
-
-#diamond-icon {
-  height: 5rem;
-  width: 5rem;
-  background-color: var(--clr-primary);
-  clip-path: url("../images/card-icons/#diamond-mask");
-}
-
-#spade-icon {
-  background-color: var(--clr-primary);
-  clip-path: url("../images/card-icons/#spade-mask");
-}
-
-#anchor-icon {
-  background-color: var(--clr-primary);
-  clip-path: url("../images/card-icons/#anchor-mask");
-}
-
-#club-icon {
-  background-color: var(--clr-primary);
-  clip-path: url("../images/card-icons/#club-mask");
+.face-icon {
+  width: 60%;
+  filter: var(--icon-filter);
+  transition: filter 0.2s;
 }
