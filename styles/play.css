@@ -10,7 +10,7 @@ main {
   --corner-style: 5px solid
     color-mix(in srgb, var(--clr-primary) 70%, var(--clr-base));
   --corner-brdr-r: 4px;
-  --border-dist: 1vh;
+  --border-dist: min(2vh, 2vw);
   position: fixed;
   height: calc(100% - 2 * var(--border-dist));
   width: calc(100% - 2 * var(--border-dist));
@@ -97,4 +97,29 @@ main::after {
   width: 60%;
   filter: var(--icon-filter);
   transition: filter 0.2s;
+}
+
+.bets {
+  position: absolute;
+  top: 100%;
+  left: 100%;
+  display: flex;
+}
+
+.info-bar-wrapper {
+  position: fixed;
+  top: 80%;
+  left: calc(75% - var(--border-dist));
+  height: 3rem;
+  width: 25%;
+  overflow: hidden;
+}
+
+.info-bar {
+  position: relative;
+  left: 5%;
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  background: var(--clr-primary);
 }
