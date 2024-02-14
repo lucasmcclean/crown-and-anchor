@@ -59,7 +59,7 @@ main::after {
 }
 
 .face {
-  --icon-filter: invert(0.3) sepia(0.5) hue-rotate(230deg);
+  --icon-filter: invert(0.4) sepia(0.5) hue-rotate(230deg);
   --background-opacity: 0;
   position: relative;
   border-radius: 20px;
@@ -69,13 +69,13 @@ main::after {
   align-items: center;
   background: linear-gradient(
     160deg,
-    color-mix(in srgb, var(--clr-base) 80%, var(--clr-secondary)),
-    color-mix(in srgb, var(--clr-base) 30%, var(--clr-secondary))
+    color-mix(in srgb, var(--clr-base) 20%, var(--clr-secondary)),
+    color-mix(in srgb, var(--clr-base) 80%, var(--clr-secondary))
   );
 }
 
 .face:hover {
-  --icon-filter: invert(0.4) sepia(0.7) hue-rotate(230deg);
+  --icon-filter: invert(0.5) sepia(0.7) hue-rotate(230deg);
   --background-opacity: 1;
 }
 
@@ -87,7 +87,7 @@ main::after {
   background: linear-gradient(
     160deg,
     color-mix(in srgb, var(--clr-base) 30%, var(--clr-secondary)),
-    color-mix(in srgb, var(--clr-base) 2%, var(--clr-secondary))
+    color-mix(in srgb, var(--clr-base) 30%, var(--clr-secondary))
   );
   opacity: var(--background-opacity);
   transition: opacity 0.2s;
@@ -121,5 +121,22 @@ main::after {
   height: 100%;
   width: 100%;
   border-radius: 20px;
+  display: flex;
+  align-items: center;
   background: var(--clr-primary);
+}
+
+.info-bar button {
+  margin-left: 5%;
+  padding-inline: 0.35rem;
+  border-radius: 15px;
+  background: var(--clr-primary);
+  font-weight: bold;
+  font-size: 1.5rem;
+  transition: all 0.2s;
+}
+
+.info-bar button:hover {
+  color: var(--clr-primary);
+  background: var(--clr-secondary);
 }
