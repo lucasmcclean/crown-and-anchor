@@ -99,11 +99,25 @@ main::after {
   transition: filter 0.2s;
 }
 
+/* Dynamically added in play.js */
 .bets {
   position: absolute;
-  top: 100%;
-  left: 100%;
+  top: 86%;
+  left: 3%;
+  height: 12%;
+  width: 94%;
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+  overflow: hidden;
+}
+
+.bet-tick {
+  height: 40%;
+  width: 2%;
+  border-radius: 20px;
+  background: var(--clr-primary);
+  filter: blur(0.1);
 }
 
 .info-bar-wrapper {
@@ -123,6 +137,7 @@ main::after {
   border-radius: 20px;
   display: flex;
   align-items: center;
+  gap: 0.5rem;
   background: var(--clr-primary);
 }
 
@@ -139,4 +154,10 @@ main::after {
 .info-bar button:hover {
   color: var(--clr-primary);
   background: var(--clr-secondary);
+}
+
+#bank-display {
+  color: var(--clr-base);
+  font-weight: bold;
+  font-size: 1.5rem;
 }
