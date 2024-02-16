@@ -53,14 +53,3 @@ h1 {
   color: var(--clr-primary);
   background: color-mix(in srgb, var(--clr-secondary) 95%, var(--clr-primary));
 }
-
-@keyframes transition-page {
-  80% {
-    filter: blur(1);
-    opacity: 0;
-  }
-  100% {
-    filter: blur(1);
-    opacity: 0;
-  }
-}

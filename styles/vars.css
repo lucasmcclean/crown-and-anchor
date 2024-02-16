@@ -9,3 +9,21 @@
   --fs-title: clamp(4rem, 10vw + 1rem, 7rem);
   --fs-base-lrg: 1.5rem;
 }
+
+@keyframes fade-in {
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}

@@ -1,6 +1,6 @@
 "use strict";
 
-/* -----Variables----- */
+const transitionTime = 0.5;
 const confirmBets = document.getElementById("confirm-bets");
 const faces = Array.from(document.getElementsByClassName("face"));
 const faceBets = Array.from(document.getElementsByClassName("bets"));
@@ -22,6 +22,11 @@ let bank = 50;
 let betAmount = 5;
 
 /* -----Execution----- */
+document.body.style.setProperty(
+  "animation",
+  `${transitionTime}s ease-in forwards fade-in`
+);
+
 bankDisplay.innerText = `${bank}`;
 confirmBets.addEventListener("click", () => calculateWinnings());
 faces.forEach((face) => {

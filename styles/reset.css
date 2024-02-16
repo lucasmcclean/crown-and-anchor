@@ -35,6 +35,8 @@ body {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  /* !-----Source of trouble----------------------------------------------! */
+  opacity: 0;
 }
 
 img,

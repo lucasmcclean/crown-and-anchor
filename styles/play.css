@@ -5,6 +5,10 @@ body {
   background: var(--clr-base);
 }
 
+body {
+  opacity: 0;
+}
+
 main {
   --corner-size: 30svh;
   --corner-style: 5px solid
