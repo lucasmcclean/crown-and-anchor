@@ -5,6 +5,15 @@ const confirmBets = document.getElementById("confirm-bets");
 const faces = Array.from(document.getElementsByClassName("face"));
 const faceBets = Array.from(document.getElementsByClassName("bets"));
 const bankDisplay = document.getElementById("bank-display");
+const displayDice = Array.from(document.getElementsByClassName("die"));
+const faceSVG = new Map([
+  ["heart", "./images/card-icons/heart.svg"],
+  ["crown", "./images/card-icons/crown.svg"],
+  ["diamond", "./images/card-icons/diamond.svg"],
+  ["spade", "./images/card-icons/spade.svg"],
+  ["anchor", "./images/card-icons/anchor.svg"],
+  ["club", "./images/card-icons/club.svg"],
+]);
 
 const bets = new Map([
   ["heart", 0],
@@ -62,7 +71,12 @@ function clearBetHTML() {
 function calculateWinnings() {
   const dice = rollDice(3);
   let winnings = 0;
+  let i = 0;
   dice.forEach((roll) => {
+    displayDice[i].innerHTML = `<img class="die-face" src="${faceSVG.get(
+      roll
+    )}" draggable="false" />`;
+    i++;
     if (bets.get(roll)) winnings += bets.get(roll);
   });
   for (const bet of bets.keys()) bets.set(bet, 0);

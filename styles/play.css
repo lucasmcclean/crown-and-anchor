@@ -5,10 +5,6 @@ body {
   background: var(--clr-base);
 }
 
-body {
-  opacity: 0;
-}
-
 main {
   --corner-size: 30svh;
   --corner-style: 5px solid
@@ -164,4 +160,34 @@ main::after {
   color: var(--clr-base);
   font-weight: bold;
   font-size: 1.5rem;
+}
+
+#dice-display {
+  position: fixed;
+  top: 0%;
+  left: calc(70% + var(--border-dist));
+  width: 25%;
+  height: 70%;
+  margin: var(--border-dist);
+  margin-top: calc(var(--border-dist) + 2rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.die {
+  height: 30%;
+  aspect-ratio: 1 / 1;
+  border-radius: 5px;
+  background: var(--clr-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.die-face {
+  width: 60%;
+  filter: invert(0.1) sepia(0.5) hue-rotate(230deg);
+  transition: filter 0.2s;
 }
