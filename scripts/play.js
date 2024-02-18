@@ -36,6 +36,17 @@ document.body.style.setProperty(
   `${transitionTime}s ease-in forwards fade-in`
 );
 
+(function () {
+  let i = 0;
+  rollDice(3).forEach((roll) => {
+    console.log(roll);
+    displayDice[i].innerHTML = `<img class="die-face" src="${faceSVG.get(
+      roll
+    )}" draggable="false" />`;
+    i++;
+  });
+})();
+
 bankDisplay.innerText = `${bank}`;
 confirmBets.addEventListener("click", () => calculateWinnings());
 faces.forEach((face) => {
