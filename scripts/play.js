@@ -30,6 +30,9 @@ let bank = 50;
 
 let betAmount = 5;
 
+// Used for locking play during animations
+let playLocked = false;
+
 /* -----Execution----- */
 document.body.style.setProperty(
   "animation",
@@ -39,7 +42,6 @@ document.body.style.setProperty(
 (function () {
   let i = 0;
   rollDice(3).forEach((roll) => {
-    console.log(roll);
     displayDice[i].innerHTML = `<img class="die-face" src="${faceSVG.get(
       roll
     )}" draggable="false" />`;
@@ -80,6 +82,7 @@ function clearBetHTML() {
 
 // Roll dice and calculate winnings based on placed bets
 function calculateWinnings() {
+  if (playLocked) return;
   const dice = rollDice(3);
   let winnings = 0;
   let i = 0;
@@ -90,15 +93,30 @@ function calculateWinnings() {
     i++;
     if (bets.get(roll)) winnings += bets.get(roll);
   });
+  visualizeWinnings(dice);
   for (const bet of bets.keys()) bets.set(bet, 0);
   bank += winnings;
   bankDisplay.innerText = `${bank}`;
-  clearBetHTML();
   return winnings;
+}
+
+function visualizeWinnings(faces) {
+  playLocked = true;
+  const faceItems = [];
+  for (const face of faces) faceItems.push(document.getElementById(face));
+  faceItems.forEach((face) => face.style.setProperty("filter", "sepia(1)"));
+  faceBets.forEach((bets) => bets.style.setProperty("opacity", "0"));
+  setTimeout(() => {
+    clearBetHTML();
+    faceItems.forEach((face) => face.style.setProperty("filter", "sepia(0)"));
+    faceBets.forEach((bets) => bets.style.setProperty("opacity", "1"));
+    playLocked = false;
+  }, 2000);
 }
 
 // Places bet and update tick for passed face
 function placeBet(face) {
+  if (playLocked) return;
   if (bank < betAmount) {
     alert("Your bank is empty. You can't place anymore bets.");
     return;

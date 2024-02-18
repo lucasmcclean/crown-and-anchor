@@ -15,6 +15,7 @@ main {
   height: calc(100% - 2 * var(--border-dist));
   width: calc(100% - 2 * var(--border-dist));
   margin: var(--border-dist);
+  margin-left: calc(1.5% + var(--border-dist));
   padding: 1rem;
   color: var(--clr-primary);
   background: linear-gradient(
@@ -72,6 +73,7 @@ main::after {
     color-mix(in srgb, var(--clr-base) 20%, var(--clr-secondary)),
     color-mix(in srgb, var(--clr-base) 80%, var(--clr-secondary))
   );
+  transition: 1s filter;
 }
 
 .face:hover {
@@ -110,6 +112,7 @@ main::after {
   flex-wrap: wrap;
   gap: 0.2rem;
   overflow: hidden;
+  transition: 1.8s opacity;
 }
 
 .bet-tick {
@@ -117,7 +120,6 @@ main::after {
   width: 2%;
   border-radius: 20px;
   background: var(--clr-primary);
-  filter: blur(0.1);
 }
 
 .info-bar-wrapper {
@@ -180,7 +182,7 @@ main::after {
   height: 30%;
   aspect-ratio: 1 / 1;
   border-radius: 5px;
-  background: var(--clr-primary);
+  background: color-mix(in srgb, var(--clr-primary) 80%, var(--clr-secondary));
   display: flex;
   justify-content: center;
   align-items: center;
