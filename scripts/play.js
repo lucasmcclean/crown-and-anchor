@@ -6,6 +6,7 @@ const faces = Array.from(document.getElementsByClassName("face"));
 const faceBets = Array.from(document.getElementsByClassName("bets"));
 const bankDisplay = document.getElementById("bank-display");
 const displayDice = Array.from(document.getElementsByClassName("die"));
+const betAmountDisplay = document.getElementById("bet-amt");
 const faceSVG = new Map([
   ["heart", "./images/card-icons/heart.svg"],
   ["crown", "./images/card-icons/crown.svg"],
@@ -26,7 +27,7 @@ const bets = new Map([
 // Used in converting numeric index to key
 const numToFaces = [...bets.keys()];
 
-let bank = 50;
+let bank = 500;
 
 let betAmount = 5;
 
@@ -55,6 +56,13 @@ faces.forEach((face) => {
   face.addEventListener("click", () => placeBet(face.id));
 });
 
+document
+  .getElementById("inc-bet-amt")
+  .addEventListener("click", () => adjustBetAmount(true));
+document
+  .getElementById("dec-bet-amt")
+  .addEventListener("click", () => adjustBetAmount(false));
+
 /* -----Functions----- */
 // Roll dice returning numDice values between 1 and 6
 function rollDice(numDice) {
@@ -67,10 +75,12 @@ function rollDice(numDice) {
 
 // Update passed face to include an additional bet tick
 function updateBetHTML(face) {
-  // Styled in play.css / .bet-tick
-  faceBets[
-    numToFaces.indexOf(face)
-  ].innerHTML += `<div class="bet-tick"></div>`;
+  for (let i = 0; i < betAmount; i += 5) {
+    // Styled in play.css / .bet-tick
+    faceBets[
+      numToFaces.indexOf(face)
+    ].innerHTML += `<div class="bet-tick"></div>`;
+  }
 }
 
 // Wipes all bet ticks from faces
@@ -86,20 +96,25 @@ function calculateWinnings() {
   const dice = rollDice(3);
   let winnings = 0;
   let i = 0;
+  let winningFaces = [];
   dice.forEach((roll) => {
     displayDice[i].innerHTML = `<img class="die-face" src="${faceSVG.get(
       roll
     )}" draggable="false" />`;
     i++;
-    if (bets.get(roll)) winnings += bets.get(roll);
+    if (bets.get(roll)) {
+      winningFaces.push(roll);
+      winnings += bets.get(roll);
+    }
   });
-  visualizeWinnings(dice);
+  visualizeWinnings(winningFaces);
   for (const bet of bets.keys()) bets.set(bet, 0);
   bank += winnings;
   bankDisplay.innerText = `${bank}`;
   return winnings;
 }
 
+// Updates visuals to reflect which faces won
 function visualizeWinnings(faces) {
   playLocked = true;
   const faceItems = [];
@@ -111,12 +126,14 @@ function visualizeWinnings(faces) {
     faceItems.forEach((face) => face.style.setProperty("filter", "sepia(0)"));
     faceBets.forEach((bets) => bets.style.setProperty("opacity", "1"));
     playLocked = false;
-  }, 2000);
+  }, 1000);
 }
 
 // Places bet and update tick for passed face
 function placeBet(face) {
   if (playLocked) return;
+  // Bet limit of two rows equates to 60 ticks
+  if (bets.get(face) >= 5 * 60) return;
   if (bank < betAmount) {
     alert("Your bank is empty. You can't place anymore bets.");
     return;
@@ -125,4 +142,14 @@ function placeBet(face) {
   bank -= betAmount;
   bankDisplay.innerText = `${bank}`;
   updateBetHTML(face);
+}
+
+function adjustBetAmount(isIncrease) {
+  if (isIncrease && betAmount < 100) betAmount += 5;
+  else if (!isIncrease && betAmount > 5) betAmount -= 5;
+  else
+    isIncrease
+      ? alert("Bet amount can't go that high.")
+      : alert("Bet amount can't go that low.");
+  betAmountDisplay.innerText = betAmount;
 }

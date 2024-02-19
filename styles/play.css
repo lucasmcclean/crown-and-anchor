@@ -105,14 +105,14 @@ main::after {
 .bets {
   position: absolute;
   top: 86%;
-  left: 3%;
-  height: 12%;
-  width: 94%;
+  left: 4%;
+  height: 11%;
+  width: 92%;
   display: flex;
   flex-wrap: wrap;
   gap: 0.2rem;
   overflow: hidden;
-  transition: 1.8s opacity;
+  transition: 0.5s opacity;
 }
 
 .bet-tick {
@@ -120,48 +120,6 @@ main::after {
   width: 2%;
   border-radius: 20px;
   background: var(--clr-primary);
-}
-
-.info-bar-wrapper {
-  position: fixed;
-  top: 80%;
-  left: calc(75% - var(--border-dist));
-  height: 3rem;
-  width: 25%;
-  overflow: hidden;
-}
-
-.info-bar {
-  position: relative;
-  left: 5%;
-  height: 100%;
-  width: 100%;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: var(--clr-primary);
-}
-
-.info-bar button {
-  margin-left: 5%;
-  padding-inline: 0.35rem;
-  border-radius: 15px;
-  background: var(--clr-primary);
-  font-weight: bold;
-  font-size: 1.5rem;
-  transition: all 0.2s;
-}
-
-.info-bar button:hover {
-  color: var(--clr-primary);
-  background: var(--clr-secondary);
-}
-
-#bank-display {
-  color: var(--clr-base);
-  font-weight: bold;
-  font-size: 1.5rem;
 }
 
 #dice-display {
@@ -192,4 +150,99 @@ main::after {
   width: 60%;
   filter: invert(0.1) sepia(0.5) hue-rotate(230deg);
   transition: filter 0.2s;
+}
+
+.info-bar-wrapper {
+  position: fixed;
+  top: 80%;
+  left: calc(75% - var(--border-dist));
+  height: 3rem;
+  width: 25%;
+  overflow: hidden;
+}
+
+.info-bar {
+  position: relative;
+  left: 5%;
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(
+    to right,
+    var(--clr-primary) 85%,
+    var(--clr-base)
+  );
+}
+
+.info-bar button {
+  padding-inline: 0.35rem;
+  border-radius: 15px;
+  background: var(--clr-primary);
+  font-weight: bold;
+  font-size: 1.5rem;
+  transition: all 0.2s;
+}
+
+.info-bar button:hover {
+  color: var(--clr-primary);
+  background: var(--clr-secondary);
+}
+
+#bank-display {
+  margin-left: 5%;
+  color: var(--clr-base);
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.bet-amt-bar-wrapper {
+  position: fixed;
+  top: 90%;
+  left: calc(80% - var(--border-dist));
+  height: 2rem;
+  width: 20%;
+  overflow: hidden;
+}
+
+.bet-amt-bar {
+  position: relative;
+  left: 5%;
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(
+    to right,
+    var(--clr-primary) 85%,
+    var(--clr-base)
+  );
+}
+
+#bet-amt {
+  margin-left: 5%;
+  padding-inline: 0.35rem;
+  color: var(--clr-base);
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.inc-dec-bet-amt {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.inc-dec-btn {
+  padding: 0.2rem;
+  border-radius: 20px;
+  transition: all 0.1s;
+}
+
+.inc-dec-btn:hover {
+  color: var(--clr-primary);
+  background: var(--clr-secondary);
 }
