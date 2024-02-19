@@ -79,6 +79,7 @@ main::after {
 .face:hover {
   --icon-filter: invert(0.5) sepia(0.7) hue-rotate(230deg);
   --background-opacity: 1;
+  cursor: pointer;
 }
 
 .face-background {
@@ -187,6 +188,7 @@ main::after {
 }
 
 .info-bar button:hover {
+  cursor: pointer;
   color: var(--clr-primary);
   background: var(--clr-secondary);
 }
@@ -243,6 +245,7 @@ main::after {
 }
 
 .inc-dec-btn:hover {
+  cursor: pointer;
   color: var(--clr-primary);
   background: var(--clr-secondary);
 }

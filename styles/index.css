@@ -49,6 +49,7 @@ h1 {
 }
 
 .menu-btn:hover {
+  cursor: pointer;
   width: 6.5em;
   color: var(--clr-primary);
   background: color-mix(in srgb, var(--clr-secondary) 95%, var(--clr-primary));
