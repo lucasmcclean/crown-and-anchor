@@ -1,3 +1,61 @@
 html {
   background: var(--clr-base);
 }
+
+main {
+  --border-dist: min(2vh, 2vw);
+  width: calc(100% - 2 * var(--border-dist));
+  margin: var(--border-dist);
+  border: 1px solid var(--clr-primary);
+  background: linear-gradient(
+    160deg,
+    var(--clr-base),
+    color-mix(in srgb, var(--clr-base) 60%, var(--clr-secondary)),
+    color-mix(in srgb, var(--clr-base) 94%, var(--clr-primary))
+  );
+}
+
+nav {
+  position: fixed;
+  top: 0%;
+  left: 20%;
+  height: 5%;
+  width: 60%;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  display: flex;
+  align-items: center;
+  background: var(--clr-secondary);
+}
+
+.nav-links {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.nav-link a {
+  color: var(--clr-primary);
+  text-decoration: none;
+}
+
+h2 {
+  padding-bottom: 2rem;
+  text-align: center;
+  text-decoration: underline
+    color-mix(in srgb, var(--clr-primary) 70%, var(--clr-secondary)) 2px;
+  font-size: 3.5rem;
+}
+
+section {
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--clr-primary);
+}
+
+section p {
+  max-width: 1000px;
+}
