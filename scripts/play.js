@@ -16,25 +16,26 @@ const faceSVG = new Map([
   ["club", "./images/card-icons/club.svg"],
 ]);
 
-const bets = new Map([
-  ["heart", 0],
-  ["crown", 0],
-  ["diamond", 0],
-  ["spade", 0],
-  ["anchor", 0],
-  ["club", 0],
-]);
+let bets =
+  new Map(JSON.parse(localStorage.getItem("betsMap"))) ||
+  new Map([
+    ["heart", 0],
+    ["crown", 0],
+    ["diamond", 0],
+    ["spade", 0],
+    ["anchor", 0],
+    ["club", 0],
+  ]);
 // Used in converting numeric index to key
 const numToFaces = [...bets.keys()];
-
-let bank = 500;
-
-let betAmount = 5;
+let bank = JSON.parse(localStorage.getItem("bankNum")) || 500;
+let betAmount = JSON.parse(localStorage.getItem("betAmountNum")) || 5;
 
 // Used for locking play during animations
 let playLocked = false;
 
 /* -----Execution----- */
+syncVisuals();
 document.body.style.setProperty(
   "animation",
   `${transitionTime}s ease-in forwards fade-in`
@@ -50,7 +51,7 @@ document.body.style.setProperty(
   });
 })();
 
-bankDisplay.innerText = `${bank}`;
+bankDisplay.innerText = bank;
 confirmBets.addEventListener("click", () => calculateWinnings());
 faces.forEach((face) => {
   face.addEventListener("click", () => placeBet(face.id));
@@ -75,7 +76,7 @@ function rollDice(numDice) {
 
 // Update passed face to include an additional bet tick
 function updateBetHTML(face) {
-  for (let i = 0; i < betAmount; i += 5) {
+  for (let i = 0; i < bets.get(face); i += 5) {
     // Styled in play.css / .bet-tick
     faceBets[
       numToFaces.indexOf(face)
@@ -109,8 +110,10 @@ function calculateWinnings() {
   });
   visualizeWinnings(winningFaces);
   for (const bet of bets.keys()) bets.set(bet, 0);
+  localStorage.setItem("betsMap", JSON.stringify(Array.from(bets.entries())));
   bank += winnings;
-  bankDisplay.innerText = `${bank}`;
+  bankDisplay.innerText = bank;
+  localStorage.setItem("bankNum", bank);
   return winnings;
 }
 
@@ -139,17 +142,29 @@ function placeBet(face) {
     return;
   }
   bets.set(face, bets.get(face) + betAmount);
+  localStorage.setItem("betsMap", JSON.stringify(Array.from(bets.entries())));
   bank -= betAmount;
-  bankDisplay.innerText = `${bank}`;
+  localStorage.setItem("bankNum", bank);
+  bankDisplay.innerText = bank;
   updateBetHTML(face);
 }
 
 function adjustBetAmount(isIncrease) {
-  if (isIncrease && betAmount < 100) betAmount += 5;
-  else if (!isIncrease && betAmount > 5) betAmount -= 5;
-  else
-    isIncrease
-      ? alert("Bet amount can't go that high.")
-      : alert("Bet amount can't go that low.");
+  if (isIncrease && betAmount < 100) {
+    betAmount += 5;
+  } else if (!isIncrease && betAmount > 5) {
+    betAmount -= 5;
+  } else {
+    isIncrease ? (betAmount = 5) : (betAmount = 100);
+  }
   betAmountDisplay.innerText = betAmount;
+  localStorage.setItem("betAmountNum", betAmount);
+}
+
+function syncVisuals() {
+  betAmountDisplay.innerText = betAmount;
+  bankDisplay.innerText = bank;
+  [...bets.keys()].forEach((face) => {
+    if (bets.get(face) !== 0) updateBetHTML(face);
+  });
 }
