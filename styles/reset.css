@@ -48,6 +48,10 @@ svg {
   max-width: 100%;
 }
 
+b {
+  font-weight: bold;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
     scroll-behavior: auto;

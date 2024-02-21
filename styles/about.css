@@ -21,6 +21,7 @@ nav {
   left: 20%;
   height: 5%;
   width: 60%;
+  border: 2px solid var(--clr-base);
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
   display: flex;
@@ -36,12 +37,20 @@ nav {
 }
 
 .nav-link a {
+  padding-inline: 0.5rem;
   color: var(--clr-primary);
   text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.nav-link a:hover {
+  background-color: var(--clr-base);
 }
 
 h2 {
-  padding-bottom: 2rem;
+  padding-bottom: 1.2rem;
   text-align: center;
   text-decoration: underline
     color-mix(in srgb, var(--clr-primary) 70%, var(--clr-secondary)) 2px;
@@ -53,9 +62,24 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: var(--clr-primary);
+  color: color-mix(in srgb, var(--clr-primary) 80%, var(--clr-secondary));
 }
 
 section p {
   max-width: 1000px;
+  font-size: 1.15rem;
+}
+
+#about {
+  padding-top: 3.5rem;
+}
+
+#sources {
+  padding-bottom: 3rem;
+}
+
+#sources a {
+  color: var(--clr-primary);
+  text-decoration: underline;
+  transition: background 0.2s;
 }
