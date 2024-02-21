@@ -16,9 +16,11 @@ const faceSVG = new Map([
   ["club", "./images/card-icons/club.svg"],
 ]);
 
-let bets =
-  new Map(JSON.parse(localStorage.getItem("betsMap"))) ||
-  new Map([
+let bets;
+if (localStorage.getItem("betsMap")) {
+  bets = new Map(JSON.parse(localStorage.getItem("betsMap")));
+} else {
+  bets = new Map([
     ["heart", 0],
     ["crown", 0],
     ["diamond", 0],
@@ -26,10 +28,21 @@ let bets =
     ["anchor", 0],
     ["club", 0],
   ]);
+}
 // Used in converting numeric index to key
 const numToFaces = [...bets.keys()];
-let bank = JSON.parse(localStorage.getItem("bankNum")) || 500;
-let betAmount = JSON.parse(localStorage.getItem("betAmountNum")) || 5;
+let bank;
+if (localStorage.getItem("bankNum")) {
+  bank = JSON.parse(localStorage.getItem("bankNum"));
+} else {
+  bank = 500;
+}
+let betAmount;
+if (localStorage.getItem("betAmountNum")) {
+  betAmount = JSON.parse(localStorage.getItem("betAmountNum"));
+} else {
+  betAmount = 5;
+}
 
 // Used for locking play during animations
 let playLocked = false;
@@ -75,8 +88,8 @@ function rollDice(numDice) {
 }
 
 // Update passed face to include an additional bet tick
-function updateBetHTML(face) {
-  for (let i = 0; i < bets.get(face); i += 5) {
+function updateBetHTML(oldVal, face) {
+  for (let i = oldVal; i < bets.get(face); i += 5) {
     // Styled in play.css / .bet-tick
     faceBets[
       numToFaces.indexOf(face)
@@ -141,12 +154,13 @@ function placeBet(face) {
     alert("Your bank is empty. You can't place anymore bets.");
     return;
   }
+  let oldAmount = bets.get(face);
   bets.set(face, bets.get(face) + betAmount);
   localStorage.setItem("betsMap", JSON.stringify(Array.from(bets.entries())));
   bank -= betAmount;
   localStorage.setItem("bankNum", bank);
   bankDisplay.innerText = bank;
-  updateBetHTML(face);
+  updateBetHTML(oldAmount, face);
 }
 
 function adjustBetAmount(isIncrease) {
@@ -165,6 +179,6 @@ function syncVisuals() {
   betAmountDisplay.innerText = betAmount;
   bankDisplay.innerText = bank;
   [...bets.keys()].forEach((face) => {
-    if (bets.get(face) !== 0) updateBetHTML(face);
+    if (bets.get(face) !== 0) updateBetHTML(0, face);
   });
 }
