@@ -79,7 +79,7 @@ document
 
 // Make top left corner functionally a back button
 Array.from(document.getElementsByClassName("back-button")).forEach((part) =>
-  part.addEventListener("click", () => redirectTransition("./play.html"))
+  part.addEventListener("click", () => redirectTransition("./index.html"))
 );
 
 /* -----Functions----- */
