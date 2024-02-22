@@ -49,6 +49,22 @@ main::after {
   border-radius: var(--corner-brdr-r);
 }
 
+.back-button {
+  position: fixed;
+  top: var(--border-dist);
+  left: var(--border-dist);
+}
+
+#top {
+  height: 1rem;
+  width: var(--corner-size);
+}
+
+#left {
+  height: var(--corner-size);
+  width: 2rem;
+}
+
 .faces-wrapper {
   height: 100%;
   width: 70%;

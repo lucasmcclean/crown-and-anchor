@@ -77,6 +77,11 @@ document
   .getElementById("dec-bet-amt")
   .addEventListener("click", () => adjustBetAmount(false));
 
+// Make top left corner functionally a back button
+Array.from(document.getElementsByClassName("back-button")).forEach((part) =>
+  part.addEventListener("click", () => redirectTransition("./play.html"))
+);
+
 /* -----Functions----- */
 // Roll dice returning numDice values between 1 and 6
 function rollDice(numDice) {
@@ -181,4 +186,12 @@ function syncVisuals() {
   [...bets.keys()].forEach((face) => {
     if (bets.get(face) !== 0) updateBetHTML(0, face);
   });
+}
+
+function redirectTransition(newPage) {
+  document.body.style.setProperty(
+    "animation",
+    `${transitionTime}s ease-in forwards fade-out`
+  );
+  window.location.href = newPage;
 }
