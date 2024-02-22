@@ -183,7 +183,7 @@ main::after {
   border-radius: 15px;
   background: var(--clr-primary);
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 3vw + 0.5rem, 1.5rem);
   transition: all 0.2s;
 }
 
@@ -248,4 +248,51 @@ main::after {
   cursor: pointer;
   color: var(--clr-primary);
   background: var(--clr-secondary);
+}
+
+@media only screen and (max-width: 1050px) {
+  .faces-wrapper {
+    height: 80%;
+    width: 100%;
+    grid-template: repeat(auto-fit, minmax(10vh, 20vh)) / repeat(2, 1fr);
+  }
+
+  .face-icon {
+    height: 60%;
+  }
+
+  .info-bar-wrapper {
+    width: 55%;
+    left: calc(45% - var(--border-dist));
+  }
+
+  .bet-amt-bar-wrapper {
+    left: calc(50% - var(--border-dist));
+    width: 50%;
+  }
+
+  #dice-display {
+    top: 80%;
+    left: var(--border-dist);
+    width: 43%;
+    height: clamp(8%, 9vw + 1rem, 15%);
+    margin: 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+  }
+
+  .die {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 5px;
+    background: color-mix(
+      in srgb,
+      var(--clr-primary) 80%,
+      var(--clr-secondary)
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
