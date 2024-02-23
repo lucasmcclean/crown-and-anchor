@@ -15,6 +15,10 @@ document
   .getElementById("about-btn")
   .addEventListener("click", () => redirectTransition("./about.html"));
 
+document
+  .getElementById("settings-btn")
+  .addEventListener("click", () => redirectTransition("./settings.html"));
+
 /*-----Functions----- */
 function redirectTransition(newPage) {
   document.body.style.setProperty(

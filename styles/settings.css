@@ -1,0 +1,86 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background: var(--clr-base);
+}
+
+main {
+  --border-dist: min(2vh, 2vw);
+  position: fixed;
+  height: calc(100% - 2 * var(--border-dist));
+  width: calc(100% - 2 * var(--border-dist));
+  margin: var(--border-dist);
+  border: 1px solid var(--clr-primary);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  color: var(--clr-primary);
+  background: linear-gradient(
+    160deg,
+    var(--clr-base),
+    color-mix(in srgb, var(--clr-base) 60%, var(--clr-secondary)),
+    color-mix(in srgb, var(--clr-base) 94%, var(--clr-primary))
+  );
+  overflow: hidden;
+}
+
+.back-button {
+  position: fixed;
+  top: calc(var(--border-dist) + 0.1rem);
+  left: calc(var(--border-dist) + 1rem);
+  color: var(--clr-primary);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 2rem;
+  z-index: 999;
+}
+
+.back-button:hover {
+  color: color-mix(in srgb, var(--clr-primary) 30%, var(--clr-secondary));
+}
+
+h1 {
+  position: fixed;
+  top: calc(var(--border-dist) + 2rem);
+  left: calc(var(--border-dist) + 2rem);
+  width: 90%;
+  padding-left: calc(var(--border-dist) + 5rem);
+  border-bottom: 5px solid var(--clr-primary);
+  color: var(--clr-primary);
+  font-size: clamp(3rem, 5vw + 1rem, 4rem);
+  font-weight: bold;
+}
+
+section {
+  position: fixed;
+  top: calc(var(--border-dist) + 12rem);
+  left: calc(var(--border-dist) + 2rem);
+  width: 15%;
+  padding-left: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+button {
+  min-height: 2.5rem;
+  min-width: 9rem;
+  border: 1px solid transparent;
+  border-radius: 15px;
+  color: var(--clr-base);
+  background: var(--clr-primary);
+  font-weight: bold;
+  transition: background 0.2s, color 0.2s, border 0.3s, min-width 0.3s;
+}
+
+button:hover {
+  min-width: 10rem;
+  border: 1px solid
+    color-mix(in srgb, var(--clr-primary) 60%, var(--clr-secondary));
+  color: var(--clr-primary);
+  background: var(--clr-secondary);
+}
