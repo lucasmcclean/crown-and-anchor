@@ -77,11 +77,6 @@ document
   .getElementById("dec-bet-amt")
   .addEventListener("click", () => adjustBetAmount(false));
 
-// Make top left corner functionally a back button
-Array.from(document.getElementsByClassName("back-button")).forEach((part) =>
-  part.addEventListener("click", () => redirectTransition("./index.html"))
-);
-
 /* -----Functions----- */
 // Roll dice returning numDice values between 1 and 6
 function rollDice(numDice) {

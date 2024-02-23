@@ -43,7 +43,6 @@ nav {
   text-decoration: none;
   font-size: 1.2rem;
   font-weight: bold;
-  transition: background 0.2s;
 }
 
 @media only screen and (max-width: 900px) {
@@ -71,11 +70,11 @@ nav {
 }
 
 .nav-link a:hover {
-  background-color: var(--clr-base);
+  text-decoration: underline;
 }
 
 h2 {
-  padding-bottom: 1.2rem;
+  padding-top: 3rem;
   color: color-mix(in srgb, var(--clr-primary) 80%, var(--clr-secondary));
   text-align: center;
   text-decoration: underline
@@ -84,7 +83,6 @@ h2 {
 }
 
 section {
-  margin-bottom: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -92,7 +90,12 @@ section {
 
 section p {
   max-width: 1000px;
+  margin-top: 1.5rem;
   font-size: clamp(1rem, 1vw + 0.5rem, 1.15rem);
+  color: color-mix(in srgb, var(--clr-primary) 80%, var(--clr-secondary));
+}
+
+section b {
   color: color-mix(in srgb, var(--clr-primary) 80%, var(--clr-secondary));
 }
 
@@ -107,5 +110,4 @@ section p {
 #sources a {
   color: var(--clr-primary);
   text-decoration: underline;
-  transition: background 0.2s;
 }

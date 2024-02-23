@@ -51,18 +51,16 @@ main::after {
 
 .back-button {
   position: fixed;
-  top: var(--border-dist);
-  left: var(--border-dist);
+  top: calc(var(--border-dist) + 0.1rem);
+  left: calc(var(--border-dist) + 1rem);
+  color: var(--clr-primary);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 2rem;
 }
 
-#top {
-  height: 1rem;
-  width: var(--corner-size);
-}
-
-#left {
-  height: var(--corner-size);
-  width: 2rem;
+.back-button:hover {
+  color: color-mix(in srgb, var(--clr-primary) 30%, var(--clr-secondary));
 }
 
 .faces-wrapper {
